@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <title>Új lakás</title>
+</head>
+<body>
+    <div class="first-container">
+        <div class="helység-méretek">
+
+            <h3>Helység adatai:</h3>
+
+            <p>Hosszúság</p>
+            <input type="number" placeholder="cm" name="" id="hossz">
+
+            <p>Szélesség:</p>
+            <input type="number" placeholder="cm" name="" id="szel">
+
+            <p>Magasság</p>
+            <input type="number" placeholder="cm" name="" id="mag">
+
+        <section>
+            <span>mennyezet is?</span>
+            <input type="checkbox" name="" id="mennyezetCheck"><br><br>
+            <button type="submit" id="SumAll">Mehet!</button>
+           <!--  <button type="reset" id="resetButton">Újra</button> -->
+        </section>
+
+        <div class="eredmeny">
+            <ul>
+                <li>Alapterület:<li id="alapterulet"></li></li>
+                <li>Falfelület:<li id="falfelulet"></li></li>
+            </ul>
+        </div>
+
+
+    <script>
+        class Helyseg{
+
+            hosszusag = -1
+            szelesseg = -1
+            magassag  = -1
+
+            constructor(hosszusag, szelesseg, magassag){
+                this.hosszusag = hosszusag;
+                this.szelesseg = szelesseg;
+                this.magassag = magassag;
+            }
+
+            getAlapterulet()
+        {
+            return (this.szelesseg*this.hosszusag)/10000
+        }
+        getMennyezet()
+        {
+            return this.getAlapterulet()
+        }
+        getFalfelulet()
+        {
+            return ((2*this.szelesseg*this.magassag)+(2*this.hosszusag*this.magassag))/10000
+        }
+        } 
+
+        //--------------------------------------SZÁMOL----------------------------------
+
+        document.getElementById('SumAll').addEventListener('click', function(){
+            let hossz = document.getElementById('hossz').value;
+            let szé = document.getElementById('szel').value;
+            let mag = document.getElementById('mag').value;
+
+        const enSzobam = new Helyseg(hossz, szé, mag)
+        
+        document.getElementById('alapterulet').innerHTML = enSzobam.getAlapterulet() + ' m2'
+
+        let checkbox = document.getElementById('mennyezetCheck')
+        if(checkbox.checked == true){
+            document.getElementById('falfelulet').innerHTML = enSzobam.getFalfelulet() + enSzobam.getMennyezet() + ' m2'
+        } else {
+            document.getElementById('falfelulet').innerHTML = enSzobam.getFalfelulet() + ' m2'
+        }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+.first-container {
+    display: flex;
+    justify-content: space-around;
+}
+.helység-méretek {
+    text-align: center;
+    padding: 1em;
+}
+#SumAll {
+    width: 9em;
+    height: 2em;
+}
+#resetButton {
+    width: 9em;
+    height: 2em;
+}
+section {
+    text-align: center;
+    padding: 1em;
+}
+#outputAlapterulet {
+    border: 1px solid;
+}
+.eredmeny ul {
+    text-align: center;
+    list-style-type: none;
+}
